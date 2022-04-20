@@ -1,0 +1,71 @@
+{% extends 'app/base.html' %}
+
+{% block page_actions %}
+  <a href="/app/basis-kasus/create" class="btn btn-primary d-none d-sm-inline-block">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+    Tambah Data Basis Kasus
+  </a>
+  <a href="/app/basis-kasus/create" class="btn btn-primary d-sm-none btn-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+  </a>
+{% endblock %}
+
+{% block content %}
+  <div class="row justify-center">
+    <div class="col-12">
+      <div class="card">
+        <div class="table-responsive">
+          <table class="table table-vcenter card-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Penyakit</th>
+                <th>Gejala</th>
+                <th class="w-1"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in object_list %}
+                <tr>
+                  <td  style="vertical-align: top;">
+                    <div class="d-flex py-1 align-items-center">
+                      <div class="flex-fill">
+                        <div class="font-weight-medium">#{{ item.id }}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td style="vertical-align: top;">
+                    <div class="d-flex py-1 align-items-center">
+                      <div class="flex-fill">
+                        <div class="font-weight-medium">{{ item.penyakit.nama }}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td  style="vertical-align: top;">
+                    <div class="d-flex py-1 align-items-center">
+                      <div class="flex-fill">
+                        {% for gejala in item.daftar_gejala.all %}
+                          <div class="font-weight-medium"><small>{{ gejala.nama }}</small></div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-end"  style="vertical-align: top;">
+                    <div class="btn-list flex-nowrap">
+                      <a href="/app/basis-kasus/{{item.id}}/update" class="btn btn-sm btn-outline-primary">
+                        Edit
+                      </a>
+                      <a href="/app/basis-kasus/{{item.id}}/delete" class="btn btn-sm btn-outline-danger">
+                        Hapus
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

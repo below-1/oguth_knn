@@ -1,0 +1,14 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-4">
+      <form method="POST">
+        {% csrf_token %}
+        <h1>Apakah anda akan menghapus data {{ object }}?</h1>
+        <input type="submit" value="Ya" class="btn btn-danger me-2" />
+        <button type="button" class="btn btn-outline" onclick="history.back()">Batalkan</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

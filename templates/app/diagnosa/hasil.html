@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Gejala yang dipilih</div>
+        </div>
+        <ul class="list-group">
+          {% for g in daftar_gejala %}
+            <li class="list-group-item">{{ g.nama }}</li>
+          {% endfor %}
+        </ul>
+        <div class="card-body">
+          <h2>{{solution.bk.penyakit.nama}}</h2>
+          <h2>{{solution.bk.penyakit.tindakan}}</h2>
+          <h3>{{solution.sm}} %</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
