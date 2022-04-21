@@ -4,6 +4,7 @@ from app.models import BasisKasus
 
 def diagnosa(request):
     context = {}
+    print(request.user)
     context['page_title'] = 'Hasil Diagnosa'
     context['page_pretitle'] = 'Diagnosa'
     if request.method == 'POST':
